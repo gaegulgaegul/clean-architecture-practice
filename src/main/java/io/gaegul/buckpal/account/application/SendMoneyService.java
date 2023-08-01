@@ -1,11 +1,11 @@
-package io.gaegul.cleanarchitecturepractice.buckpal.account.application;
+package io.gaegul.buckpal.account.application;
 
 import javax.transaction.Transactional;
 
-import io.gaegul.cleanarchitecturepractice.buckpal.account.application.port.in.SendMoneyCommand;
-import io.gaegul.cleanarchitecturepractice.buckpal.account.application.port.in.SendMoneyUsecase;
-import io.gaegul.cleanarchitecturepractice.buckpal.account.application.port.out.LoadAccountPort;
-import io.gaegul.cleanarchitecturepractice.buckpal.account.application.port.out.UpdateAccountStatePort;
+import io.gaegul.buckpal.account.application.port.in.SendMoneyCommand;
+import io.gaegul.buckpal.account.application.port.in.SendMoneyUsecase;
+import io.gaegul.buckpal.account.application.port.out.LoadAccountPort;
+import io.gaegul.buckpal.account.application.port.out.UpdateAccountStatePort;
 import lombok.RequiredArgsConstructor;
 
 /**

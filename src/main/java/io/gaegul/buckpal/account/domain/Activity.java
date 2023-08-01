@@ -1,8 +1,8 @@
-package io.gaegul.cleanarchitecturepractice.buckpal.account.domain;
+package io.gaegul.buckpal.account.domain;
 
 import java.time.LocalDateTime;
 
-import io.gaegul.cleanarchitecturepractice.buckpal.account.domain.Account.AccountId;
+import io.gaegul.buckpal.account.domain.Account.AccountId;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package io.gaegul.cleanarchitecturepractice.buckpal.account.application.port.in;
+package io.gaegul.buckpal.account.application.port.in;
 
 /**
  * 송금하기

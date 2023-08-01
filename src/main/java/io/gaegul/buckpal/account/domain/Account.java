@@ -1,4 +1,4 @@
-package io.gaegul.cleanarchitecturepractice.buckpal.account.domain;
+package io.gaegul.buckpal.account.domain;
 
 import java.time.LocalDateTime;
 

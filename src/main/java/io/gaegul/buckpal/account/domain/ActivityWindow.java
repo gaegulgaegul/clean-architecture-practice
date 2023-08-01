@@ -1,4 +1,4 @@
-package io.gaegul.cleanarchitecturepractice.buckpal.account.domain;
+package io.gaegul.buckpal.account.domain;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import io.gaegul.cleanarchitecturepractice.buckpal.account.domain.Account.AccountId;
+import io.gaegul.buckpal.account.domain.Account.AccountId;
 import lombok.NonNull;
 
 /**
