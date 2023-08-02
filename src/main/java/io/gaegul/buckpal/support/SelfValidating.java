@@ -9,7 +9,7 @@ import javax.validation.Validator;
 
 /**
  * 유효성 검증 규칙에 위반된 정보가 있는지 확인하는 클래스
- * @Valid 애너테이션의 동작을 대신 수행한다.
+ * <code>@Valid</code> 애너테이션의 동작을 대신 수행한다.
  * @param <T>
  */
 public abstract class SelfValidating<T> {
@@ -26,7 +26,7 @@ public abstract class SelfValidating<T> {
 	protected void validateSelf() {
 		final Set<ConstraintViolation<T>> violations = validator.validate((T)this);
 		if (!violations.isEmpty()) {
-			throw new ConstraintViolationException(violations)
+			throw new ConstraintViolationException(violations);
 		}
 	}
 }
