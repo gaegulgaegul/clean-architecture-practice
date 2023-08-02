@@ -66,7 +66,7 @@ public class Account {
 	}
 
 	/**
-	 * 출금 가능 여부 확인
+	 * 출금 가능 여부 확인, 출금 계좌는 초과 인출되면 안 된다.
 	 * @param money
 	 * @return
 	 */
