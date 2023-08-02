@@ -26,7 +26,7 @@ class SendMoneyCommandTest {
         class 빈_값을_입력하면 {
 
             @Test
-            void 예외가_발생한다() {
+            void 유효성_검증_규칙에_의해_예외가_발생한다() {
                 assertThatThrownBy(() -> new SendMoneyCommand(null, null, null))
                         .isInstanceOf(ConstraintViolationException.class);
                 assertThatThrownBy(() -> new SendMoneyCommand(new AccountId(1L), new AccountId(2L), null))
