@@ -15,7 +15,7 @@ public class Account {
 	private final ActivityWindow activityWindow;		/* 계좌의 모든 활동 정보 */
 
 	/**
-	 * 금액 합계 반환
+	 * 계좌 잔여 금액 반환
 	 * @return
 	 */
 	public Money calculateBalance() {
