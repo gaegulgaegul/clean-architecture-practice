@@ -1,32 +1,32 @@
 package io.gaegul.buckpal.support;
 
+import java.util.Set;
+
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Validation;
 import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
-import java.util.Set;
 
 /**
- * 유효성 검증 규칙 위반 서포터
+ * 유효성 검증 규칙에 위반된 정보가 있는지 확인하는 클래스
+ * <code>@Valid</code> 애너테이션의 동작을 대신 수행한다.
  * @param <T>
  */
 public abstract class SelfValidating<T> {
 
-    private Validator validator;
+	private Validator validator;
 
-    public SelfValidating() {
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        this.validator = factory.getValidator();
-    }
+	public SelfValidating() {
+		this.validator = Validation.buildDefaultValidatorFactory().getValidator();
+	}
 
-    /**
-     * 유효성 검증 규칙 위반 검사
-     */
-    protected void validateSelf() {
-        Set<ConstraintViolation<T>> violations = this.validator.validate((T) this);
-        if (!violations.isEmpty()) {
-            throw new ConstraintViolationException(violations);
-        }
-    }
+	/**
+	 * 유효성 검증 규칙에 위반된 정보를 확인한다.
+	 */
+	protected void validateSelf() {
+		final Set<ConstraintViolation<T>> violations = validator.validate((T)this);
+		if (!violations.isEmpty()) {
+			throw new ConstraintViolationException(violations);
+		}
+	}
 }
