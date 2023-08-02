@@ -1,4 +1,4 @@
-package io.gaegul.buckpal.account.application;
+package io.gaegul.buckpal.account.application.service;
 
 import javax.transaction.Transactional;
 
