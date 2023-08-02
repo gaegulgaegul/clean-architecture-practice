@@ -1,8 +1,10 @@
 package io.gaegul.buckpal.account.domain;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.Value;
 
 /**
@@ -11,8 +13,28 @@ import lombok.Value;
 @AllArgsConstructor
 public class Account {
 	private final AccountId id;							/* 계좌 ID */
+	@Getter
 	private final Money baselineBalance;				/* 현재 계좌의 잔고 */
+	@Getter
 	private final ActivityWindow activityWindow;		/* 계좌의 모든 활동 정보 */
+
+	/**
+	 * 계좌 ID를 제외한 객체 생성 팩토리 메서드
+	 */
+	public static Account withoutId(Money baselineBalance, ActivityWindow activityWindow) {
+		return new Account(null, baselineBalance, activityWindow);
+	}
+
+	/**
+	 * 계좌 ID를 포함한 객체 생성 팩토리 메서드
+	 */
+	public static Account withId(AccountId accountId, Money baselineBalance, ActivityWindow activityWindow) {
+		return new Account(accountId, baselineBalance, activityWindow);
+	}
+
+	public Optional<AccountId> getId(){
+		return Optional.ofNullable(this.id);
+	}
 
 	/**
 	 * 계좌 잔여 금액 반환
@@ -49,8 +71,8 @@ public class Account {
 	 * @param targetAccountId
 	 * @return
 	 */
-	public boolean withdrawal(Money money, AccountId targetAccountId) {
-		if (!mayWithdrawal(money)) {
+	public boolean withdraw(Money money, AccountId targetAccountId) {
+		if (!mayWithdraw(money)) {
 			return false;
 		}
 
@@ -70,9 +92,9 @@ public class Account {
 	 * @param money
 	 * @return
 	 */
-	private boolean mayWithdrawal(Money money) {
+	private boolean mayWithdraw(Money money) {
 		return Money.add(this.baselineBalance, money.negate())
-			.isPositive();
+			.isPositiveOrZero();
 	}
 
 	@Value
