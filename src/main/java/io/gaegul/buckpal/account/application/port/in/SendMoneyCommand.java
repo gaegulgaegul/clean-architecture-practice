@@ -5,12 +5,14 @@ import javax.validation.constraints.NotNull;
 import io.gaegul.buckpal.account.domain.Account.AccountId;
 import io.gaegul.buckpal.account.domain.Money;
 import io.gaegul.buckpal.support.SelfValidating;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 /**
  * 송금 입력 모델
  */
 @Getter
+@EqualsAndHashCode(callSuper = false)
 public class SendMoneyCommand extends SelfValidating<SendMoneyCommand> {
 	@NotNull
 	private final AccountId sourceAccountId;

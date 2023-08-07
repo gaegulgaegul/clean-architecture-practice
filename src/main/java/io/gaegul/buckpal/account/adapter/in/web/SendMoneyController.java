@@ -1,7 +1,7 @@
 package io.gaegul.buckpal.account.adapter.in.web;
 
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.gaegul.buckpal.account.application.port.in.SendMoneyCommand;
@@ -27,7 +27,7 @@ class SendMoneyController {
      * @param targetAccountId 수신 계좌 ID
      * @param amount 금액
      */
-    @GetMapping("/accounts/send/{sourceAccountId}/{targetAccountId}/{amount}")
+    @PostMapping("/accounts/send/{sourceAccountId}/{targetAccountId}/{amount}")
     void sendMoney(@PathVariable("sourceAccountId") Long sourceAccountId,
                    @PathVariable("targetAccountId") Long targetAccountId,
                    @PathVariable("amount") Long amount) {
