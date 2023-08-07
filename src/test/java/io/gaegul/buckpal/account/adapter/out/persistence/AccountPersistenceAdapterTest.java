@@ -1,5 +1,7 @@
 package io.gaegul.buckpal.account.adapter.out.persistence;
 
+import static io.gaegul.buckpal.stub.AccountStub.defaultAccount;
+import static io.gaegul.buckpal.stub.ActivityStub.defaultActivity;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDateTime;
@@ -15,6 +17,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.jdbc.Sql;
 
 import io.gaegul.buckpal.account.domain.Account;
+import io.gaegul.buckpal.account.domain.ActivityWindow;
 import io.gaegul.buckpal.account.domain.Money;
 
 @DisplayName("AccountPersistenceAdapter 클래스의")
@@ -45,6 +48,34 @@ class AccountPersistenceAdapterTest {
 
 				assertThat(account.getActivityWindow().getActivities()).hasSize(2);
 				assertThat(account.calculateBalance()).isEqualTo(Money.of(500));
+			}
+		}
+	}
+
+	@Nested
+	class updateActivities_메서드는 {
+
+		@Nested
+		class 올바른_파라미터를_전달하면 {
+
+			@Test
+			void 성공한다() {
+				final Account account = defaultAccount()
+					.withBaselineBalance(Money.of(555L))
+					.withActivityWindow(
+						new ActivityWindow(
+							defaultActivity()
+								.withId(null)
+								.withMoney(Money.of(1L))
+								.build()
+						))
+					.build();
+
+				sut.updateActivities(account);
+
+				assertThat(activityRepository.count()).isEqualTo(1);
+				ActivityJpaEntity savedActivity = activityRepository.findAll().get(0);
+				assertThat(savedActivity.getAmount()).isEqualTo(1L);
 			}
 		}
 	}
