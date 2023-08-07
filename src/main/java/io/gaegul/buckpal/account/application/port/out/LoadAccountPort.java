@@ -11,9 +11,9 @@ public interface LoadAccountPort {
 
 	/**
 	 * 계좌 조회
-	 * @param accountId
-	 * @param now
+	 * @param accountId 계좌 ID
+	 * @param baselineDate 기준 일시
 	 * @return
 	 */
-	Account loadAccount(Account.AccountId accountId, LocalDateTime now);
+	Account loadAccount(Account.AccountId accountId, LocalDateTime baselineDate);
 }
