@@ -65,6 +65,11 @@ class AccountMapper {
 		return new ActivityWindow(mappedActivities);
 	}
 
+	/**
+	 * 금융 거래 내역 도메인을 영속성 모델로 반환
+	 * @param activity 금융 거래 활동 내역
+	 * @return
+	 */
 	ActivityJpaEntity mapToJpaEntity(Activity activity) {
 		return new ActivityJpaEntity(
 			activity.getId() == null ? null : activity.getId().getValue(),
@@ -72,6 +77,7 @@ class AccountMapper {
 			activity.getOwnerAccountId().getValue(),
 			activity.getSourceAccountId().getValue(),
 			activity.getTargetAccountId().getValue(),
-			activity.getMoney().getAmount().longValue());
+			activity.getMoney().getAmount().longValue()
+		);
 	}
 }
