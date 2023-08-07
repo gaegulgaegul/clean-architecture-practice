@@ -40,7 +40,7 @@ class AccountPersistenceAdapterTest {
 			void 성공한다() {
 				final Account account = sut.loadAccount(
 					new Account.AccountId(1L),
-					LocalDateTime.of(2018, 8, 10, 0, 0)
+					LocalDateTime.of(2022, 8, 10, 0, 0)
 				);
 
 				assertThat(account.getActivityWindow().getActivities()).hasSize(2);
