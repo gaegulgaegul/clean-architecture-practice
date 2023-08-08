@@ -4,6 +4,7 @@ import javax.transaction.Transactional;
 
 import io.gaegul.buckpal.account.application.port.in.SendMoneyCommand;
 import io.gaegul.buckpal.account.application.port.in.SendMoneyUsecase;
+import io.gaegul.buckpal.account.application.port.out.AccountLock;
 import io.gaegul.buckpal.account.application.port.out.LoadAccountPort;
 import io.gaegul.buckpal.account.application.port.out.UpdateAccountStatePort;
 import io.gaegul.buckpal.account.domain.Account.AccountId;
@@ -17,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 public class SendMoneyService implements SendMoneyUsecase {
 	private final LoadAccountPort loadAccountPort;
 	private final UpdateAccountStatePort updateAccountStatePort;
+	private final AccountLock accountLock;
 
 	@Override
 	public boolean sendMoney(SendMoneyCommand command) {
