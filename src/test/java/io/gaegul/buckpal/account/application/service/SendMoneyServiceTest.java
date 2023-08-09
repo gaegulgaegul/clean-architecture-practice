@@ -56,7 +56,7 @@ class SendMoneyServiceTest {
         class 송금_출금에_실패하면 {
 
             @Test
-            void 송신계좌만_락_수행하고_실패_결과값을_반환() {
+            void 송신계좌만_락_수행하고_수정없이_실패_결과값을_반환() {
                 final Account sourceAccount = givenAnAccountWithId(41L);
                 final Account targetAccount = givenAnAccountWithId(42L);
 
@@ -99,7 +99,7 @@ class SendMoneyServiceTest {
         class 송금_입금에_실패하면 {
 
             @Test
-            void 송신계좌만_락_수행하고_실패_결과값을_반환() {
+            void 송수신계좌에_락_수행하고_수정없이_실패_결과값을_반환() {
                 final Account sourceAccount = givenAnAccountWithId(41L);
                 final Account targetAccount = givenAnAccountWithId(42L);
 
@@ -143,7 +143,7 @@ class SendMoneyServiceTest {
         class 송금에_성공하면 {
 
             @Test
-            void 송수신계좌에_락_수행하고_성공_결과값을_반환() {
+            void 송수신계좌에_락_수행하고_수정_후_성공_결과값을_반환() {
                 final Account sourceAccount = givenAnAccountWithId(41L);
                 final Account targetAccount = givenAnAccountWithId(42L);
 
