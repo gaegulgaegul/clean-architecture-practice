@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 
 import javax.transaction.Transactional;
 
+import org.springframework.stereotype.Service;
+
 import io.gaegul.buckpal.account.application.port.in.SendMoneyCommand;
 import io.gaegul.buckpal.account.application.port.in.SendMoneyUsecase;
 import io.gaegul.buckpal.account.application.port.out.AccountLock;
@@ -16,6 +18,7 @@ import lombok.RequiredArgsConstructor;
 /**
  * 송금 동작 구현체
  */
+@Service
 @RequiredArgsConstructor
 @Transactional
 public class SendMoneyService implements SendMoneyUsecase {
