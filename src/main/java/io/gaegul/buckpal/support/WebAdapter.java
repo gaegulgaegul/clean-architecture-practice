@@ -10,13 +10,13 @@ import org.springframework.core.annotation.AliasFor;
 import org.springframework.stereotype.Component;
 
 /**
- * 영속성 어뎁터 컴포넌트 애너테이션
+ * 웹 어뎁터 컴포넌트 애너테이션
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Component
-public @interface PersistenceAdapter {
+public @interface WebAdapter {
 
 	@AliasFor(annotation = Component.class)
 	String value() default "";

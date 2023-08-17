@@ -8,6 +8,7 @@ import io.gaegul.buckpal.account.application.port.in.SendMoneyCommand;
 import io.gaegul.buckpal.account.application.port.in.SendMoneyUsecase;
 import io.gaegul.buckpal.account.domain.Account.AccountId;
 import io.gaegul.buckpal.account.domain.Money;
+import io.gaegul.buckpal.support.WebAdapter;
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
  *  - 송금 API
  * @author lim myeongseop
  */
+@WebAdapter
 @RestController
 @RequiredArgsConstructor
 class SendMoneyController {
