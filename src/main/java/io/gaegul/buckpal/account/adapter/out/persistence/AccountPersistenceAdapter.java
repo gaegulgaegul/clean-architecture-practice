@@ -5,19 +5,18 @@ import java.util.List;
 
 import javax.persistence.EntityNotFoundException;
 
-import org.springframework.stereotype.Component;
-
 import io.gaegul.buckpal.account.application.port.out.LoadAccountPort;
 import io.gaegul.buckpal.account.application.port.out.UpdateAccountStatePort;
 import io.gaegul.buckpal.account.domain.Account;
 import io.gaegul.buckpal.account.domain.Account.AccountId;
 import io.gaegul.buckpal.account.domain.Activity;
+import io.gaegul.buckpal.support.PersistenceAdapter;
 import lombok.RequiredArgsConstructor;
 
 /**
  * 계좌 영속성 어댑터
  */
-@Component
+@PersistenceAdapter
 @RequiredArgsConstructor
 class AccountPersistenceAdapter implements LoadAccountPort, UpdateAccountStatePort {
 	private final AccountRepository accountRepository;
