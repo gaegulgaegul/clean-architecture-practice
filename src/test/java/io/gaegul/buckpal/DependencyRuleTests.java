@@ -31,15 +31,18 @@ public class DependencyRuleTests {
 	void 헥사고날_아키텍처_구조_검증() {
 		HexagonalArchitecture.boundedContext("io.gaegul.buckpal.account")
 			.withDomainLayer("domain")
+
 			.withAdaptersLayer("adapter")
 			.incoming("in.web")
 			.outgoing("out.persistence")
 			.and()
+
 			.withApplicationLayer("application")
 			.services("service")
 			.incomingPorts("port.in")
 			.outgoingPorts("port.out")
 			.and()
+
 			.withConfiguration("configuration")
 			.check(new ClassFileImporter().importPackages("io.gaegul.buckpal.account.."));
 	}

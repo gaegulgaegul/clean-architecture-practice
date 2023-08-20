@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.tngtech.archunit.core.domain.JavaClasses;
 
+
 public class Adapters extends ArchitectureElement {
 	private final HexagonalArchitecture parentContext;
 	private final List<String> incomingAdapterPackages = new ArrayList<>();

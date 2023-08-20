@@ -10,6 +10,9 @@ import com.tngtech.archunit.base.DescribedPredicate;
 import com.tngtech.archunit.core.domain.JavaClasses;
 import com.tngtech.archunit.core.importer.ClassFileImporter;
 
+/**
+ * 아키텍처 검증 엘리먼트
+ */
 public class ArchitectureElement {
 
 	final String basePackage;
@@ -27,6 +30,12 @@ public class ArchitectureElement {
 		return this.basePackage + "." + relativePackage;
 	}
 
+	/**
+	 * 의존되지 않아야 할 패키지 구조 검증
+	 * @param fromPackageName 검증 패키지명
+	 * @param toPackageName 의존 대상 패키지명
+	 * @param classes 기본 패키지 구조의 클래스 모음
+	 */
 	static void denyDependency(final String fromPackageName, final String toPackageName, final JavaClasses classes) {
 		noClasses()
 			.that()
@@ -37,6 +46,12 @@ public class ArchitectureElement {
 			.check(classes);
 	}
 
+	/**
+	 * 의존되지 않아야 할 패키지 구조 검증
+	 * @param fromPackages 검증 패키지 목록
+	 * @param toPackages 의존 대상 패키지 목록
+	 * @param classes 기본 패키지 구조의 클래스 모음
+	 */
 	static void denyAnyDependency(final List<String> fromPackages, final List<String> toPackages, final JavaClasses classes) {
 		for (String fromPackage : fromPackages) {
 			for (String toPackage : toPackages) {
@@ -51,10 +66,19 @@ public class ArchitectureElement {
 		}
 	}
 
+	/**
+	 * 패키지 구조의 모든 클래스 정보를 반환하는 클래스패스 반환
+	 * @param packageName 패키지명
+	 * @return
+	 */
 	private static String matchAllClassesInPackage(final String packageName) {
 		return packageName + "..";
 	}
 
+	/**
+	 * 빈 패키지 구조가 되면 안되는 영역 검증
+	 * @param packageName 패키지명
+	 */
 	void denyEmptyPackage(final String packageName) {
 		classes()
 			.that()
@@ -63,10 +87,19 @@ public class ArchitectureElement {
 			.check(classesInPackage(packageName));
 	}
 
+	/**
+	 * 패키지 구조의 클래스 모음 반환
+	 * @param packageName 패키지명
+	 * @return
+	 */
 	private JavaClasses classesInPackage(final String packageName) {
 		return new ClassFileImporter().importPackages(packageName);
 	}
 
+	/**
+	 * 빈 패키지 구조가 되면 안되는 영역 검증
+	 * @param packages 패키지 목록
+	 */
 	void denyEmptyPackages(final List<String> packages) {
 		for (String packageName : packages) {
 			denyEmptyPackage(packageName);
